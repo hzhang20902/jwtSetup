@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.figgs.jwtexample.models.User;
 import com.figgs.jwtexample.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
@@ -20,5 +22,9 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
         return UserDetailsImpl.build(user);
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 }
