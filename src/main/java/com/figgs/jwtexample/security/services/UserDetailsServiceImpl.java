@@ -1,6 +1,7 @@
 package com.figgs.jwtexample.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,7 +25,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         return UserDetailsImpl.build(user);
     }
 
-    public List<User> findAll(){
-        return userRepository.findAll();
+    public ResponseEntity<List<User>> findAll(){
+        List<User> usersList = userRepository.findAll();
+        if (usersList.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(usersList);
     }
 }
