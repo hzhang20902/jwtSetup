@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  jwtexample:
+    build: ./
+    container_name: jwtexample
+    depends_on:
+      - db
+    environment:
+      - DB_SERVER:db
+      - POSTGRES_DB=dco6cda72harjm
+      - POSTGRES_USER=qowcudvvglyxoz
+      - POSTGRES_PASSWORD=ef87ba47bcdb0b37644a606a99fee43e464687542841c2f6fefd1bfa7bdc5d28
+
+    ports:
+      - 8080:8080
+
+  db:
+    image: "postgres:13-alpine"
+    container_name: db
+    restart: always
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_DB=dco6cda72harjm
+      - POSTGRES_USER=qowcudvvglyxoz
+      - POSTGRES_PASSWORD=ef87ba47bcdb0b37644a606a99fee43e464687542841c2f6fefd1bfa7bdc5d28
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+volumes:
+  postgres_data:
