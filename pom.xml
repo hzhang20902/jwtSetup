@@ -11,6 +11,7 @@
 	<groupId>com.figgs</groupId>
 	<artifactId>jwtexample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>jwtexample</name>
 	<description>tutorial for spring security</description>
 	<properties>
