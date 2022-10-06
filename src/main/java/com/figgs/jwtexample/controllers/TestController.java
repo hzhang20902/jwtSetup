@@ -30,8 +30,8 @@ public class TestController {
 
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public String userAccess(){
-        return "User Context.";
+    public ResponseEntity<List<User>> userAccess(){
+        return userDetailsService.findAll();
     }
 
     @GetMapping("/mod")
@@ -39,13 +39,10 @@ public class TestController {
     public ResponseEntity<List<User>> modAccess(){
         return userDetailsService.findAll();
     }
-//    public String moderatorAccess(){
-//        return "Moderator Board.";
-//    }
 
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
-    public String adminAccess(){
-        return "Admin Board.";
+    public ResponseEntity<List<User>> adminAccess(){
+        return userDetailsService.findAll();
     }
 }
