@@ -25,7 +25,7 @@ public class TestController {
 
     @GetMapping("/all")
     public String allAccess(){
-        return "Independent Artists Across The Globe";
+        return "Projects Page";
     }
 
     @GetMapping("/user")
